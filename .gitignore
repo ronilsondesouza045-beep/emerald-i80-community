@@ -1,0 +1,25 @@
+# Arquivos do servidor e do cliente que nao podem entrar no repositorio
+Data/
+_Server/mysql/data/
+*.exe
+*.dll
+*.pdb
+*.mpq
+*.MPQ
+
+# Dados privados e temporarios
+configuracao-servidor.cmd
+BACKUPS_AUTOMATICOS/
+_BACKUP*/
+Logs/
+*.log
+*.pid
+mysql-bin.*
+REALMLIST_PARA_JOGADORES.txt
+
+# Ferramentas e ambientes locais
+.vercel/
+.env*
+node_modules/
+.DS_Store
+Thumbs.db
