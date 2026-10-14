@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Guia gratuito para entrar no servidor Emerald i80 de World of Warcraft 3.3.5a usando Tailscale.">
+  <title>Emerald i80 — Jogar gratuitamente</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <nav><span class="brand">EMERALD <b>i80</b></span><a href="#entrar">Como entrar</a></nav>
+    <div class="hero-copy">
+      <p class="eyebrow">SERVIDOR COMUNITÁRIO · WOW 3.3.5a</p>
+      <h1>Entre em Azeroth.<br><em>Sem mensalidade.</em></h1>
+      <p class="lede">Instale o Tailscale, aceite o convite do dono do servidor e configure uma única linha. O acesso é privado e direto entre os jogadores e o computador que hospeda o realm.</p>
+      <a class="cta" href="#entrar">Ver o passo a passo <span>↓</span></a>
+    </div>
+    <div class="orb" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <section class="status-strip">
+      <div><strong>3.3.5a</strong><span>Build 12340</span></div>
+      <div><strong>Tailscale</strong><span>Rede privada</span></div>
+      <div><strong>PC + Android</strong><span>Winlator compatível</span></div>
+    </section>
+
+    <section id="entrar" class="steps">
+      <p class="eyebrow">COMECE AQUI</p>
+      <h2>Quatro passos. Uma vez só.</h2>
+      <div class="grid">
+        <article><span>01</span><h3>Tenha o cliente</h3><p>Use uma instalação completa do WoW 3.3.5a, build 12340. Abra sempre pelo <code>Wow.exe</code>.</p></article>
+        <article><span>02</span><h3>Instale o Tailscale</h3><p>Baixe para Windows ou Android, faça login em sua própria conta e deixe o aplicativo conectado.</p><a href="https://tailscale.com/download" target="_blank" rel="noopener">Baixar Tailscale ↗</a></article>
+        <article><span>03</span><h3>Aceite o convite</h3><p>Abra o link enviado pelo dono do servidor. Ele compartilha somente a máquina do Emerald, não toda a rede.</p></article>
+        <article><span>04</span><h3>Configure e jogue</h3><p>Edite <code>Data\enUS\realmlist.wtf</code> e use o IP informado pelo dono. Depois entre com sua conta.</p></article>
+      </div>
+    </section>
+
+    <section class="realmlist">
+      <div><p class="eyebrow">CONFIGURAÇÃO</p><h2>A única linha que muda.</h2><p>O dono do servidor envia o IP Tailscale. Substitua o exemplo abaixo e salve o arquivo.</p></div>
+      <div class="terminal"><div class="dots"><i></i><i></i><i></i></div><code>set realmlist <span>100.x.y.z</span></code><button id="copy">Copiar exemplo</button></div>
+    </section>
+
+    <section class="devices">
+      <div class="device"><span>WINDOWS</span><h3>Computador</h3><ol><li>Tailscale conectado</li><li>Convite aceito</li><li>Realmlist configurado</li><li>Abrir Wow.exe</li></ol></div>
+      <div class="device accent"><span>ANDROID</span><h3>Winlator</h3><ol><li>Tailscale no Android, fora do container</li><li>WoW completo dentro do Winlator</li><li>Editar realmlist.wtf</li><li>Executar Wow.exe</li></ol></div>
+    </section>
+
+    <section class="host">
+      <p class="eyebrow">QUER HOSPEDAR TAMBÉM?</p>
+      <h2>O mesmo kit funciona em outro Emerald.</h2>
+      <p>Copie o inicializador para a raiz do repack. Ele detecta o IP Tailscale, cria um backup do banco, atualiza o realm e inicia MySQL, AuthServer e WorldServer. Cada anfitrião usa a própria conta e o próprio compartilhamento Tailscale.</p>
+    </section>
+  </main>
+
+  <footer><span>Emerald i80 — projeto comunitário independente.</span><span>World of Warcraft é marca de seus respectivos proprietários. Nenhum cliente do jogo é distribuído aqui.</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
