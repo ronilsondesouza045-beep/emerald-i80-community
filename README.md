@@ -1,0 +1,91 @@
+# Emerald i80 — Kit comunitário
+
+Portal, automação e documentação para executar localmente um servidor Emerald i80 compatível com WoW 3.3.5a build 12340 e permitir acesso privado por Tailscale.
+
+> Este repositório não distribui o cliente World of Warcraft, mapas, DBCs, VMAPs, MMAPs, executáveis do servidor, bancos de dados, MPQs ou outros arquivos de terceiros. Use o kit somente com arquivos que você tenha autorização para utilizar.
+
+## O que está incluído
+
+- site responsivo para os jogadores;
+- inicializador único para MySQL, AuthServer e WorldServer;
+- detecção automática do IP Tailscale;
+- backup automático do banco `auth` antes de alterar o realm;
+- atualização automática de `auth.realmlist`;
+- criação do realmlist que deve ser enviado aos jogadores;
+- instruções para Windows e Android/Winlator;
+- configuração pronta para Vercel, GitHub Pages e hospedagem estática comum.
+
+## Início rápido para o dono do servidor
+
+1. Baixe ou clone este repositório.
+2. Copie `servidor/ABRIR_EMERALD_ONLINE.bat` para a raiz do seu repack.
+3. Copie `servidor/configuracao-servidor.exemplo.cmd` com o nome `configuracao-servidor.cmd`.
+4. Edite `configuracao-servidor.cmd` e coloque os dados do MySQL do seu repack.
+5. Instale o [Tailscale para Windows](https://tailscale.com/download/windows) e faça login.
+6. Execute `ABRIR_EMERALD_ONLINE.bat`.
+7. Na página Machines do Tailscale, compartilhe somente a máquina do servidor com o jogador.
+8. Envie ao jogador o convite e o conteúdo de `REALMLIST_PARA_JOGADORES.txt`.
+
+## Para o jogador
+
+1. Instale o Tailscale no Windows ou Android.
+2. Entre em uma conta própria.
+3. Aceite o convite enviado pelo dono do servidor.
+4. Deixe o Tailscale conectado.
+5. No arquivo `Data/enUS/realmlist.wtf` — ou `enGB`/`ptBR` — use `set realmlist 100.x.y.z` com o IP informado.
+6. Abra `Wow.exe` diretamente.
+
+## Publicar o site no Vercel
+
+O site está em `site/` e não exige instalação nem compilação.
+
+### Pela interface do Vercel
+
+1. Entre em [vercel.com](https://vercel.com/).
+2. Escolha **Add New → Project**.
+3. Importe este repositório do GitHub.
+4. Defina **Root Directory** como `site`.
+5. Escolha **Framework Preset: Other**.
+6. Não informe Build Command.
+7. Publique.
+
+### GitHub Pages
+
+O workflow incluído em `.github/workflows/pages.yml` publica a pasta `site/`. No repositório, abra **Settings → Pages** e selecione **GitHub Actions** como fonte.
+
+## Limitação importante
+
+Vercel e GitHub Pages hospedam o portal, não o servidor WoW. O protocolo do jogo usa TCP nas portas 3724 e 8085. O PC anfitrião deve permanecer ligado, com Tailscale, MySQL, AuthServer e WorldServer ativos.
+
+## Segurança
+
+- Nunca publique `configuracao-servidor.cmd`.
+- Nunca publique `_Server/mysql/data`, pois contém contas e personagens.
+- Nunca publique backups ou logs.
+- Compartilhe somente a máquina do servidor no Tailscale.
+- Revogue o compartilhamento quando uma pessoa não precisar mais do acesso.
+
+## Estrutura
+
+```text
+emerald-i80-community/
+├── .github/workflows/pages.yml
+├── servidor/
+│   ├── ABRIR_EMERALD_ONLINE.bat
+│   └── configuracao-servidor.exemplo.cmd
+├── site/
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js
+│   └── vercel.json
+├── docs/
+│   ├── JOGADOR-PC-E-WINLATOR.md
+│   └── PUBLICAR-SITE.md
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+## Licença
+
+Os scripts, o site e a documentação deste kit são fornecidos sob a licença MIT. Essa licença não se aplica a arquivos do jogo, repacks, bancos de dados ou componentes de terceiros.
